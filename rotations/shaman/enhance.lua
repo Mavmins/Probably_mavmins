@@ -110,6 +110,10 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 	
 	--elemental_mastery,if=talent.elemental_mastery.enabled&!talent.primal_elementalist.enabled
 	{ "16166", "!player.spell(117013).exists"},
+	
+	{ "114049", { -- ascendance
+	  "!player.buff(114051)"
+	}},
 		
 	--fire_elemental_totem,if=!active
 	{ "2894", "@mavmins.fireElemental"},
@@ -119,8 +123,7 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 		"!player.buff(114051)",
 		"player.spell(17364).cooldown > 2"
 	}},
-	
-	
+		
 	}, "modifier.cooldowns"},
 
 	-- AoE Rotation
