@@ -1,0 +1,10 @@
+## Interface: 50400
+## Title: Probably - mavmins
+## Notes: ProbablyEngine Custom Profile Pack
+## Author: Mavmins
+## Version 1.0
+## Dependencies: Probably
+
+libs\functions.lua
+libs\listener.lua
+rotations\shaman\enhance.lua
