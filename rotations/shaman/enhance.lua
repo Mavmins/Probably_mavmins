@@ -59,7 +59,6 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 	--Cleanse Spirit
 	--Cleanse Spirit Mouseover
 	--Purge
-	--WindShear
 	 
 	-- Cooldowns
 	{{
