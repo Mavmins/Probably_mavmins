@@ -16,45 +16,45 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 		"modifier.interrupts"}},
 	 
 	--Healthstone
-	{"#healthstone", "player.health <= 60"},
+	{"#healthstone", "player.health < 61"},
 			
 	--Draenei: Gift of the Naaru
 	{ "120668", {
 		"!player.buff(120668)",
-		"player.health <= 70"}},
+		"player.health < 71"}},
 	
 	--Astral shift
 	{ "108271", {
 		"!player.buff(108271)",
 		"!player.buff(30823)",
-		"player.health <= 50"}},
+		"player.health < 51"}},
 	
 	--Shamanistic Rage----
 	{ "30826", {
 		"!player.buff(108271)",
 		"!player.buff(30823)",
-		"player.health <= 55"}},
+		"player.health < 56"}},
 		
 	--Healing Stream Totem
 	{ "5394", {
 		"!player.totem(5394)",
 		"!player.totem(108280)",
-		"player.health <= 70"}},
+		"player.health < 74"}},
 	
 	--Healing Tide Totem----
 	{ "108280", {
 		"!player.totem(108280)",
-		"player.health <= 40"}},
+		"player.health < 40"}},
 		
 	--Healing Surge----
 	{ "8004", {
 		"player.mana >= 30",
-		"player.health <= 30"}},
+		"player.health < 30"}},
 		
 	--Stone Bulwark Totem
 	{ "108270", {
 		"!player.totem(108270)",
-		"player.health <= 50"}},
+		"player.health < 75"}},
 		
 	--Cleanse Spirit
 	--Cleanse Spirit Mouseover
@@ -95,7 +95,7 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 		"player.spell(16166).exists",
 		"player.spell(117013).exists",
 		"@mavmins.fireElementalglyph",
-		"player.spell(2894).cooldown >= 80"}},
+		"player.spell(2894).cooldown > 79"}},
 	
 	--elemental_mastery,if=talent.elemental_mastery.enabled&(talent.primal_elementalist.enabled&!glyph.fire_elemental_totem.enabled&(cooldown.fire_elemental_totem.remains=0|cooldown.fire_elemental_totem.remains>=50))
 	{ "16166", { 
@@ -103,22 +103,24 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 		"!@mavmins.fireElementalglyph",
 		"player.spell(2894).cooldown = 0"}},
 	
-	{ "16166",{ 
+	{ "16166", { 
 		"player.spell(117013).exists",
 		"!@mavmins.fireElementalglyph",
-		"player.spell(2894).cooldown >= 50"}},
+		"player.spell(2894).cooldown > 49"}},
 	
 	--elemental_mastery,if=talent.elemental_mastery.enabled&!talent.primal_elementalist.enabled
 	{ "16166", "!player.spell(117013).exists"},
-	
+		
 	--fire_elemental_totem,if=!active
-	{ "2894", "!player.totem(2894)"},
+	{ "2894", "@mavmins.fireElemental"},
 	
 	--ascendance,if=cooldown.strike.remains>=3
-	{ "114049", {
-	"player.spell(17364).cooldown >= 3",
-	"!player.buff(114049)"}},
-
+	{ "114049", { 				
+		"!player.buff(114051)",
+		"player.spell(17364).cooldown > 2"
+	}},
+	
+	
 	}, "modifier.cooldowns"},
 
 	-- AoE Rotation
@@ -233,7 +235,7 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 		{ "3599", "@mavmins.SearingTotem"},
 		
 		--Gloves
-		--{"#gloves"},
+		{"#gloves", "player.spell(110403).exists"},
 		
 		--unleash_elements,if=(talent.unleashed_fury.enabled|set_bonus.tier16_2pc_melee=1)
 		{ "73680", {
@@ -364,6 +366,10 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 			"player.buff(53817).count > 1",
 			"!player.spell(403).casting",
 			"!player.spell(117014).casting",
+			"player.spell(73680).cooldown >= 1.5",
+			"player.spell(17364).cooldown >= 1.5",
+			"player.spell(8050).cooldown >= 1.5",
+			"player.spell(60103).cooldown >= 1.5",
 			"!player.buff(114049)"}},
 	
 	}, {"!modifier.multitarget", "@mavmins.oneTarget"}},

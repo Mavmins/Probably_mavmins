@@ -182,6 +182,25 @@ function mavmins.magmaTotem()
 	end
 end
 
+function mavmins.fireElemental()
+	local TOT1, TOTNAME, startTime, duration = GetTotemInfo(1)
+	if TOTNAME ~= tostring(GetSpellInfo(2894)) then
+		return true
+	end
+end
+
+--function mavmins.ascendence()
+--	local ASCENDANCE = UnitBuffID("player",114049)
+--	local STRIKE_START, STRIKE_DURATION = GetSpellCooldown(17364)
+--	local STRIKE_CD = STRIKE_START + STRIKE_DURATION - GetTime()
+
+--	if ASCENDANCE == nil then
+--		if STRIKE_CD >= 3 then
+--			return true
+--		end
+--	end
+--end
+
 function mavmins.oneTarget()
 	if TARGET_MODE == "ONE" then
 		return true
