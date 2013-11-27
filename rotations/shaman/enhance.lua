@@ -12,6 +12,8 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 	
 	--Wind Shear
 	 { "6552", {
+		"target.exists",
+		"target.casting",
 		"@mavmins.interruptCast",
 		"modifier.interrupts"}},
 	 
@@ -19,8 +21,8 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 	{"#healthstone", "player.health < 61"},
 			
 	--Draenei: Gift of the Naaru
-	{ "120668", {
-		"!player.buff(120668)",
+	{ "59544", {
+		"!player.buff(59544)",
 		"player.health < 71"}},
 	
 	--Astral shift
@@ -113,7 +115,7 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 	{ "16166", "!player.spell(117013).exists"},
 	
 	{ "114049", { -- ascendance
-	  "!player.buff(114051)"
+	  "!player.buff(114049)"
 	}},
 		
 	--fire_elemental_totem,if=!active
@@ -121,7 +123,7 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 	
 	--ascendance,if=cooldown.strike.remains>=3
 	{ "114049", { 				
-		"!player.buff(114051)",
+		"!player.buff(114049)",
 		"player.spell(17364).cooldown > 2"
 	}},
 		
