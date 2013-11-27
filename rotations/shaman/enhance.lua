@@ -53,6 +53,7 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 		
 	--Stone Bulwark Totem
 	{ "108270", {
+		"player.spell(108270).exists",
 		"!player.totem(108270)",
 		"player.health < 75"}},
 		
