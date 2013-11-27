@@ -241,15 +241,14 @@ function mavmins.interruptCast()
 	if UnitCastingInfo("target") ~= nil then
 		local castName,_,_,_, castStartTime, castEndTime, _, _, castInterruptable = UnitCastingInfo("target") 
 
-			if select(9, UnitCastingInfo("target")) == false
-			or select(8, UnitChannelInfo("target")) == false then
+			if select(9, UnitCastingInfo("target")) == false then
 			
 				local timeSinceStart = (GetTime() * 1000 - castStartTime) / 1000
 				local timeLeft = ((GetTime() * 1000 - castEndTime) * -1) / 1000
 				local castTime = castEndTime - castStartTime
 				local currentPercent = timeSinceStart / castTime * 100000
 			
-				if currentPercent >= 65 then
+				if currentPercent >= 50 then
 					return true
 				end 
 			end	
