@@ -11,17 +11,18 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 	--Utility / Healing
 	
 	--Wind Shear
-	 { "6552", {
+	 { "57994", {
 		"target.exists",
 		"target.casting",
 		"@mavmins.interruptCast",
 		"modifier.interrupts"}},
 	 
 	--Healthstone
-	{"#healthstone", "player.health < 61"},
+	{"#5512", "player.health < 45"},
 			
 	--Draenei: Gift of the Naaru
 	{ "59544", {
+		"player.spell(59544).exists",
 		"!player.buff(59544)",
 		"player.health < 71"}},
 	
@@ -114,17 +115,24 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 	--elemental_mastery,if=talent.elemental_mastery.enabled&!talent.primal_elementalist.enabled
 	{ "16166", "!player.spell(117013).exists"},
 	
-	{ "114049", { -- ascendance
-	  "!player.buff(114049)"
-	}},
+	--ascendance,if=cooldown.strike.remains>=3
+	--{ "114049", { 				
+	--	"!player.buff(114049)"
+	--	"player.spell(17364).cooldown > 2"
+	--}},
 		
 	--fire_elemental_totem,if=!active
 	{ "2894", "@mavmins.fireElemental"},
 	
 	--ascendance,if=cooldown.strike.remains>=3
 	{ "114049", { 				
-		"!player.buff(114049)",
+		"!player.buff(114051)",
 		"player.spell(17364).cooldown > 2"
+	}},
+	
+	{ "114049", { 				
+		"player.totem(2894)",
+		"!player.buff(114051)"
 	}},
 		
 	}, "modifier.cooldowns"},
@@ -241,7 +249,9 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 		{ "3599", "@mavmins.SearingTotem"},
 		
 		--Gloves
-		{"#gloves", "player.spell(110403).exists"},
+		{"#gloves", {
+			"player.spell(110403).exists",
+			"target.exists"}},
 		
 		--unleash_elements,if=(talent.unleashed_fury.enabled|set_bonus.tier16_2pc_melee=1)
 		{ "73680", {
