@@ -189,18 +189,6 @@ function mavmins.fireElemental()
 	end
 end
 
---function mavmins.ascendence()
---	local ASCENDANCE = UnitBuffID("player",114049)
---	local STRIKE_START, STRIKE_DURATION = GetSpellCooldown(17364)
---	local STRIKE_CD = STRIKE_START + STRIKE_DURATION - GetTime()
-
---	if ASCENDANCE == nil then
---		if STRIKE_CD >= 3 then
---			return true
---		end
---	end
---end
-
 function mavmins.oneTarget()
 	if TARGET_MODE == "ONE" then
 		return true
@@ -238,8 +226,7 @@ end
 
 function mavmins.interruptCast()
 
-	if UnitCastingInfo("target") ~= nil then
-		local castName,_,_,_, castStartTime, castEndTime, _, _, castInterruptable = UnitCastingInfo("target") 
+	local castName,_,_,_, castStartTime, castEndTime, _, _, castInterruptable = UnitCastingInfo("target") 
 
 			if select(9, UnitCastingInfo("target")) == false then
 			
@@ -248,17 +235,16 @@ function mavmins.interruptCast()
 				local castTime = castEndTime - castStartTime
 				local currentPercent = timeSinceStart / castTime * 100000
 			
-				if currentPercent >= 50 then
+				if currentPercent >= 40 then
 					return true
 				end 
-			end	
-	end
-	
-	if UnitChannelInfo("target") ~= nil then
-		if select(8, UnitChannelInfo("target")) == false then
-			return true
-		end
-	end
+				
+			elseif UnitChannelInfo("target") ~= nil then
+			
+				if select(8, UnitChannelInfo("target")) == false then
+					return true
+				end
+			end
 	
 end
 

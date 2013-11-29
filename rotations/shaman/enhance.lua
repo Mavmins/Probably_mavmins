@@ -33,7 +33,7 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 		"player.health < 51"}},
 	
 	--Shamanistic Rage----
-	{ "30826", {
+	{ "30823", {
 		"!player.buff(108271)",
 		"!player.buff(30823)",
 		"player.health < 56"}},
@@ -58,7 +58,7 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 	{ "108270", {
 		"player.spell(108270).exists",
 		"!player.totem(108270)",
-		"player.health < 75"}},
+		"player.health < 90"}},
 		
 	--Cleanse Spirit
 	--Cleanse Spirit Mouseover
@@ -387,6 +387,9 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 			"player.spell(8050).cooldown >= 1.5",
 			"player.spell(60103).cooldown >= 1.5",
 			"!player.buff(114049)"}},
+			
+		--spirit walk target > 15 yds
+		{ "58875", "target.range <= 15"}, 
 	
 	}, {"!modifier.multitarget", "@mavmins.oneTarget"}},
 	
