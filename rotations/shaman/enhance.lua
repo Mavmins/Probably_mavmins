@@ -245,6 +245,9 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 
     -- Rotation
 	{{
+		--spirit walk target > 15 yds
+		{ "58875", "target.range >= 15"}, 
+		
 		--searing totem
 		{ "3599", "@mavmins.SearingTotem"},
 		
@@ -387,10 +390,7 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 			"player.spell(8050).cooldown >= 1.5",
 			"player.spell(60103).cooldown >= 1.5",
 			"!player.buff(114049)"}},
-			
-		--spirit walk target > 15 yds
-		{ "58875", "target.range <= 15"}, 
-	
+				
 	}, {"!modifier.multitarget", "@mavmins.oneTarget"}},
 	
 
