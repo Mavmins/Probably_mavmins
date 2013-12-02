@@ -8,7 +8,7 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 	{ "8024", "!player.enchant.offhand" }, --Flametounge
 	{ "324", "!player.buff(324)" }, --Lightning Shield
 	
-	--Utility / Healing
+	--Utility Interrupt
 	
 	--Wind Shear
 	 { "57994", {
@@ -16,7 +16,10 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 		"target.casting",
 		"@mavmins.interruptCast",
 		"modifier.interrupts"}},
+	 	 
+	 --Healing / Survival
 	 
+	{{
 	--Healthstone
 	{"#5512", "player.health < 45"},
 			
@@ -60,6 +63,8 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 		"!player.totem(108270)",
 		"player.health < 90"}},
 		
+	}, "toggle.healing"},
+	
 	--Cleanse Spirit
 	--Cleanse Spirit Mouseover
 	--Purge
@@ -75,8 +80,7 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 	--virmens_bite_potion,if=time>60&(pet.primal_fire_elemental.active|pet.greater_fire_elemental.active|target.time_to_die<=60)
 	{"#76089", "player.totem(2894)"},
 		
-	--{"#76089", {
-	--	"target.ttd <= 60"}},
+	--{"#76089", "target.ttd <= 60"},
 	
 	--blood_fury
 	{ "33697", { 
@@ -92,37 +96,31 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 	{ "16166", { 
 		"player.spell(16166).exists",
 		"player.spell(117013).exists",
-		"@mavmins.fireElementalglyph",
+		"player.glyph(217)",
 		"player.spell(2894).cooldown = 0"}},
 	
 	{ "16166", { 
 		"player.spell(16166).exists",
 		"player.spell(117013).exists",
-		"@mavmins.fireElementalglyph",
+		"player.glyph(217)",
 		"player.spell(2894).cooldown > 79"}},
 	
 	--elemental_mastery,if=talent.elemental_mastery.enabled&(talent.primal_elementalist.enabled&!glyph.fire_elemental_totem.enabled&(cooldown.fire_elemental_totem.remains=0|cooldown.fire_elemental_totem.remains>=50))
 	{ "16166", { 
 		"player.spell(117013).exists",
-		"!@mavmins.fireElementalglyph",
+		"!player.glyph(217)",
 		"player.spell(2894).cooldown = 0"}},
 	
 	{ "16166", { 
 		"player.spell(117013).exists",
-		"!@mavmins.fireElementalglyph",
+		"!player.glyph(217)",
 		"player.spell(2894).cooldown > 49"}},
 	
 	--elemental_mastery,if=talent.elemental_mastery.enabled&!talent.primal_elementalist.enabled
 	{ "16166", "!player.spell(117013).exists"},
-	
-	--ascendance,if=cooldown.strike.remains>=3
-	--{ "114049", { 				
-	--	"!player.buff(114049)"
-	--	"player.spell(17364).cooldown > 2"
-	--}},
 		
 	--fire_elemental_totem,if=!active
-	{ "2894", "@mavmins.fireElemental"},
+	{ "2894", "!player.totem(2894)"},
 	
 	--ascendance,if=cooldown.strike.remains>=3
 	{ "114049", { 				
@@ -395,10 +393,12 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 	
 
 }, {
-
   -- Buffs
   { "Windfury Weapon", "!player.enchant.mainhand" },
   { "Flametongue Weapon", "!player.enchant.offhand" },
   { "Lightning Shield", "!player.buff(Lightning Shield)" },
-
-})
+  
+}, function()
+	ProbablyEngine.toggle.create('healing', 'Interface\\Icons\\spell_nature_rejuvenation', 'Healing', 'Toggle Healing')
+	end
+)
