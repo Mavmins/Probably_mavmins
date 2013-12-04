@@ -73,12 +73,20 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 	{{
 	--stormlash_totem,if=!active&!buff.stormlash.up&(buff.bloodlust.up|time>=60)
 	{ "120668", {
-	"target.range <= 5",
-	"!player.buff(120676)",
-	"@mavmins.heroism"}},
+		"target.range <= 5",
+		"!player.buff(120676)",
+		"@mavmins.heroism"}},
 		
 	--virmens_bite_potion,if=time>60&(pet.primal_fire_elemental.active|pet.greater_fire_elemental.active|target.time_to_die<=60)
-	{"#76089", "player.totem(2894)"},
+	--{"#76089", {
+	--	"player.totem(2894)",
+	--	"!player.buff(105697",
+	--	"@mavmins.virmenPotion"}},
+	
+	{"!/run UseItemByName(76089)", {
+		"player.totem(2894)",
+		"!player.buff(105697)",
+		"@mavmins.virmenPotion"}},
 		
 	--{"#76089", "target.ttd <= 60"},
 	
@@ -118,6 +126,13 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 	
 	--elemental_mastery,if=talent.elemental_mastery.enabled&!talent.primal_elementalist.enabled
 	{ "16166", "!player.spell(117013).exists"},
+	
+	--gloves
+	{"!/run UseInventoryItem(10)", {
+		"@mavmins.Gloves",
+		"!player.buff(96228)",
+		"!player.totem(2894)",
+		"target.exists"}},
 		
 	--fire_elemental_totem,if=!active
 	{ "2894", "!player.totem(2894)"},
@@ -250,9 +265,15 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 		{ "3599", "@mavmins.SearingTotem"},
 		
 		--Gloves
-		{"#gloves", {
-			"player.spell(110403).exists",
-			"target.exists"}},
+		--{"#gloves", {
+		--	"player.spell(110403).exists",
+		--	"target.exists"}},
+			
+		--{"!/run UseInventoryItem(10)", {
+		--	"@mavmins.Gloves",
+		--	"!player.buff(96228)",
+		--	"!player.totem(2894)",
+		--	"target.exists"}},
 		
 		--unleash_elements,if=(talent.unleashed_fury.enabled|set_bonus.tier16_2pc_melee=1)
 		{ "73680", {

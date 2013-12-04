@@ -85,26 +85,6 @@ function mavmins.t15_4pc()
 	end
 end
 
---function mavmins.frostShockglyph()
---	local enabled2, glyphType2, glyphTooltipIndex2, glyphSpellID2, icon2 = GetGlyphSocketInfo(2)
---	local enabled4, glyphType4, glyphTooltipIndex4, glyphSpellID4, icon4 = GetGlyphSocketInfo(4)
---	local enabled6, glyphType6, glyphTooltipIndex6, glyphSpellID6, icon6 = GetGlyphSocketInfo(6)
-
---	if glyphSpellID2 == 55443 or glyphSpellID4 == 55443 or glyphSpellID6 == 55443 then
---		return true
---	end
---end
-
---function mavmins.fireElementalglyph()
---	local enabled2, glyphType2, glyphTooltipIndex2, glyphSpellID2, icon2 = GetGlyphSocketInfo(2)
---	local enabled4, glyphType4, glyphTooltipIndex4, glyphSpellID4, icon4 = GetGlyphSocketInfo(4)
---	local enabled6, glyphType6, glyphTooltipIndex6, glyphSpellID6, icon6 = GetGlyphSocketInfo(6)
-	
---	if glyphSpellID2 == 55455 or glyphSpellID4 == 55455 or glyphSpellID6 ~= 55455 then
---		return true
---	end
---end
-
 function mavmins.heroism()
  
 	local HeroismSpells = {
@@ -246,6 +226,20 @@ function mavmins.interruptCast()
 				end
 			end
 	
+end
+
+function mavmins.virmenPotion()
+	if GetItemCount(76089,false,false) > 0 and select(3,GetItemCooldown(76089)) == 1 then 
+		return true
+	end
+end
+
+function mavmins.Gloves()
+	if IsPlayerSpell(110403) == true then
+		if GetInventoryItemCooldown("player",10) == 0 then
+			return true
+		end
+	end
 end
 
 -- Register library
