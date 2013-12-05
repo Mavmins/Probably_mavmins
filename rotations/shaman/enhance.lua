@@ -115,11 +115,13 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 	
 	--elemental_mastery,if=talent.elemental_mastery.enabled&(talent.primal_elementalist.enabled&!glyph.fire_elemental_totem.enabled&(cooldown.fire_elemental_totem.remains=0|cooldown.fire_elemental_totem.remains>=50))
 	{ "16166", { 
+		"player.spell(16166).exists",
 		"player.spell(117013).exists",
 		"!player.glyph(217)",
 		"player.spell(2894).cooldown = 0"}},
 	
 	{ "16166", { 
+		"player.spell(16166).exists",
 		"player.spell(117013).exists",
 		"!player.glyph(217)",
 		"player.spell(2894).cooldown > 49"}},
