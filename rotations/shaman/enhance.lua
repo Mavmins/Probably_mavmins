@@ -127,7 +127,9 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 		"player.spell(2894).cooldown > 49"}},
 	
 	--elemental_mastery,if=talent.elemental_mastery.enabled&!talent.primal_elementalist.enabled
-	{ "16166", "!player.spell(117013).exists"},
+	{ "16166", {
+		"!player.spell(117013).exists",
+		"player.spell(16166).exists"}},
 	
 	--gloves
 	{"!/run UseInventoryItem(10)", {
