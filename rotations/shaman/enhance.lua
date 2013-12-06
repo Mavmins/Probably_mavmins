@@ -31,6 +31,7 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 	
 	--Astral shift
 	{ "108271", {
+		"player.spell(108271).exists",
 		"!player.buff(108271)",
 		"!player.buff(30823)",
 		"player.health < 51"}},
