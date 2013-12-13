@@ -139,6 +139,9 @@ ProbablyEngine.rotation.register_custom(263, "Mavmins Enhancement", {
 		"!player.totem(2894)",
 		"target.exists"}},
 		
+	--lifeblood
+	{ "121279", "player.spell(121279).exists"},
+		
 	--fire_elemental_totem,if=!active
 	{ "2894", "!player.totem(2894)"},
 	
